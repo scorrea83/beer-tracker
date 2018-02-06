@@ -7,3 +7,4 @@ class Beer < ActiveRecord::Base
   validates_presence_of :brewery, :style, :name
   validates :abv, presence: true, length: {in: 0..30}
 end
+ 
