@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207014126) do
+ActiveRecord::Schema.define(version: 20180208012019) do
 
   create_table "beers", force: :cascade do |t|
     t.string   "name"
     t.integer  "brewery_id"
     t.integer  "style_id"
-    t.decimal  "abv",         precision: 3, scale: 1
+    t.float    "abv"
     t.integer  "ibu"
     t.string   "description"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "breweries", force: :cascade do |t|
