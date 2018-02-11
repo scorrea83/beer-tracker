@@ -8,5 +8,13 @@
     <th>ABV</th>
     <th>IBU</th>
   </tr>
-
+    <% Beer.all.each do |beer| %>
+      <tr>
+        <td><a href="/beers/<%=beer.id%>"><%= beer.name %></a></td>
+        <td><a href="/beers/<%=beer.id%>"><%= beer.brewery.name %></a></td>
+        <td><%= beer.style.name%></td>
+        <td><%= beer.abv%></td>
+        <td><%= beer.ibu%></td>
+      </tr>
+    <% end %>
 <table>
