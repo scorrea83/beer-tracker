@@ -4,4 +4,8 @@ class StylesController < ApplicationController
     erb :'styles/styles'
   end
 
+  get '/styles/:id' do
+    erb :'styles/show_style'
+  end
+
 end
