@@ -1,2 +1,16 @@
 <h1><%= @brewery.name %></h1>
 <h4><%= @brewery.country %></h4>
+
+<h3>List of Beers</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Style</th>
+  </tr>
+  <% @brewery.beers.each do |beer| %>
+    <tr>
+      <td><a href="/beers/<%=beer.id%>"><%= beer.name %></a></td>
+      <td><%= beer.style.name %></td>
+    </tr>
+  <% end %>
+<table>
