@@ -1,1 +1,10 @@
 <h1>List of all Styles</h1>
+
+<% Style.all.order(:name).each do |style|%>
+  <div>
+    <ul>
+      <li><a href="/styles/<%=style.id%>"><%=style.name%></a></li>
+    <ul>
+  </div>
+
+<% end %>
