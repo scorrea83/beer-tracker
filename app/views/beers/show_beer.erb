@@ -1,2 +1,9 @@
-<h1><%= @brewery.name %></h1>
-<h4><%= @brewery.country %></h4>
+<h1><%= @beer.name %></h1>
+<h4>Brewery: <%= @beer.brewery.name %></h4>
+<h4>Style: <%=@beer.style.name%></h4>
+
+<p>ABV: <%=@beer.abv%>%</p>
+<p>IBU: <%=@beer.ibu%></p>
+
+<h3>Description</h3>
+<p><%=@beer.description%></p>
