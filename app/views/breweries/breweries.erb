@@ -1,1 +1,20 @@
 <h1>List of All Breweries </h1>
+
+ <!-- <% Brewery.all.each do |brewery| %>
+   <div>
+   <p><a href="/breweries/<%=brewery.slug%>"><%= brewery.name %></a></p>
+
+   </div>
+ <% end %> -->
+<table>
+  <tr>
+    <th>Brewery</th>
+    <th>Country</th>
+  </tr>
+    <% Brewery.all.each do |brewery| %>
+      <tr>
+        <td><a href="/breweries/<%=brewery.slug%>"><%= brewery.name %></a></td>
+        <td><%= brewery.country %></td>
+      </tr>
+    <% end %>
+<table>
