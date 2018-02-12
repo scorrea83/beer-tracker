@@ -1,1 +1,9 @@
 <h1>List of Beer Tracker Experiences</h1>
+
+<% Experience.all.order(created_at: :desc).each do |experience| %>
+  <div>
+    <p><%=experience.beer.name%><br>
+    Rated: <%=experience.rating%> by <%=experience.user.name%>  <button><a href="/experiences/<%=experience.id%>">View details</a></button> <br> on <%=experience.created_at%>
+    </p>
+  </div>
+<% end %>
