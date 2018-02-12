@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use StylesController
+use ExperiencesController
 use BeersController
 use BreweriesController
 use UsersController
