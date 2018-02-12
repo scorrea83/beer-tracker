@@ -1,1 +1,10 @@
-hello <%=@user.name%>
+<h1>Welcome <%=@user.username%></h1>
+
+<h4>Here are all your beer experiences:</h4>
+<!-- Style.all.order(:name).each -->
+<% @user.experiences.each do |experience| %>
+  <div>
+    <p><%=experience.beer.name%> <br>
+    Rating: <%=experience.rating%>  <button><a href="/experiences/<%=experience.id%>">View details</a></button></p>
+  </div>
+<% end %>
