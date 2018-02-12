@@ -2,3 +2,18 @@
 
 <h3>Description</h3>
 <p><%=@style.description%></p>
+
+<h3><%= @style.name %> Example Beers:</h3>
+
+<table>
+  <tr>
+    <th>Beer</th>
+    <th>Brewery</th>
+  </tr>
+    <% @style.beers.each do |beer| %>
+      <tr>
+        <td><a href="/beers/<%=beer.id%>"><%= beer.name %></a></td>
+        <td><a href="/breweries/<%=beer.brewery.slug%>"><%= beer.brewery.name %></a></td>
+      </tr>
+    <% end %>
+<table>
