@@ -20,6 +20,16 @@ class UsersController < ApplicationController
       erb :'users/login'
     end
 
+    post '/login' do
+      @user = User.find_by(username: params[:username])
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        binding.pry
+        redirect "/users/#{@user.slug}"
+      else
+        redirect '/login'
+      end
+    end
 
 
 end
