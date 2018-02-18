@@ -4,7 +4,6 @@
 
 
 
-
 <% if locals.empty? %>
   <form method="POST" action="/experiences/new/brewery">
     <h4>Begin by selecting your beer's brewery from the list</h4>
@@ -16,6 +15,14 @@
     </select>
     <br></br>
 
+    <h4>If the brewery does not appear on the list, please fill out the brewery information below</h4>
+
+    <label for="new_brewery">Brewery Name:</label>
+    <input type="text" name="new_brewery[name]" id="new_brewery"></input>
+    <br>
+    <label for="new_brewery_country">Brewery Country:</label>
+    <input type="text" name="new_brewery[country]" id="new_brewery_country"></input>
+    <br>
 
     <button type="submit">Continue</button>
   </form>
