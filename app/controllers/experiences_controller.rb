@@ -18,7 +18,14 @@ class ExperiencesController < ApplicationController
     if !params[:brewery_id].empty? && params[:new_brewery].none? {|key, value| value == ""}
       flash[:message] = "Sorry, to continue you must either select a brewery from the dropdown list OR add new brewery information to create new brewery."
       redirect 'experiences/new'
-
+    elsif !params[:brewery_id].empty?
+      @brewery = brewery
+      erb :'experiences/create_experience', locals: {message: "brewery located/created"}
+    elsif params[:new_brewery].none? {|key, value| value == ""}
+      # @brewery.save = new_brewery
+      session[:new_brewery] = new_brewery
+      redirect '/beers/new'
+      # erb :'experiences/create_experience', locals: {message: "brewery located/created"}
     else
       flash[:message] = "Sorry, to continue you must either select a brewery from the dropdown list OR add new brewery information to create new brewery."
       if !new_brewery.valid?
