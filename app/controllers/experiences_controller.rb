@@ -11,6 +11,13 @@ class ExperiencesController < ApplicationController
     erb :'experiences/create_experience'
   end
 
+  post '/experiences/new/brewery' do
+    brewery = Brewery.find_by(id: params[:brewery_id])
+    new_brewery = Brewery.new(params[:new_brewery])
+
+  end
+
+
 
   get '/experiences/:id' do
     @experience = Experience.find(params[:id])
