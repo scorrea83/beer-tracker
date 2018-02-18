@@ -19,6 +19,12 @@ class ExperiencesController < ApplicationController
       flash[:message] = "Sorry, to continue you must either select a brewery from the dropdown list OR add new brewery information to create new brewery."
       redirect 'experiences/new'
 
+    else
+      flash[:message] = "Sorry, to continue you must either select a brewery from the dropdown list OR add new brewery information to create new brewery."
+      if !new_brewery.valid?
+        @errors = new_brewery.errors.full_messages
+      end
+      erb :'experiences/create_experience'
     end
   end
 
