@@ -43,5 +43,16 @@
 <% end %>
 
 <% if locals[:message] == "brewery located/created" %>
+  <h3> <%=@brewery.name%> Selected </h3>
+  <form method="POST" action="/experiences/new/beer">
+    <h4>Next, select your beer from the list of <%=@brewery.name%> beers:</h4>
+    <select name="beer_id">
+        <option value="">None</option>
+      <% @brewery.beers.order(:name).each do |beer|%>
+        <option value="<%=beer.id%>"><%=beer.name%></option>
+      <% end %>
+    </select>
+    <button type="submit">Continue</button>
+  </form>
 
 <% end %>
