@@ -39,6 +39,12 @@ class ExperiencesController < ApplicationController
   end
 
   post '/experiences/new/beer' do
+    @brewery = Brewery.find_by(id: params[:brewery_id])
+    beer = Beer.find_by(id: params[:beer_id])
+    @new_style = Style.new(name: params[:style_name])
+    new_beer = Beer.new(params[:beer])
+    new_beer.brewery = @brewery
+
   end
 
 
