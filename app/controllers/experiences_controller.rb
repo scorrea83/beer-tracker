@@ -58,6 +58,18 @@ class ExperiencesController < ApplicationController
       @beer = new_beer
       @beer.save
       erb :'experiences/create_experience', locals: {message: "beer located/created"}
+    elsif !params[:style_name].empty? && params[:beer][:name] != ""  && params[:beer][:abv] != ""
+      if @new_style.valid?
+        @new_style.save
+        new_beer.style = @new_style
+        @beer = new_beer
+        @beer.save
+        erb :'experiences/create_experience', locals: {message: "beer located/created"}
+      else
+        @errors = @new_style.errors.full_messages
+        @errors.map! {|error| "New Beer Style #{error}"}
+        erb :'experiences/create_experience', locals: {message: "brewery located/created"}
+      end
     else
       flash[:message] = "Sorry, to continue you must either select a beer from the dropdown list OR add new beer information to create new beer."
       if !new_beer.valid?
