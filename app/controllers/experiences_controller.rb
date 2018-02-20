@@ -54,6 +54,10 @@ class ExperiencesController < ApplicationController
     elsif !params[:style_name].empty? && !params[:beer][:style_id].empty?
       @errors = ["When creating new beer, please only select Beer Style from list OR fill out the new Style Name"]
       erb :'experiences/create_experience', locals: {message: "brewery located/created"}
+    elsif new_beer.valid?
+      @beer = new_beer
+      @beer.save
+      erb :'experiences/create_experience', locals: {message: "beer located/created"}
     else
       flash[:message] = "Sorry, to continue you must either select a beer from the dropdown list OR add new beer information to create new beer."
       if !new_beer.valid?
