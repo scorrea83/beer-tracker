@@ -5,6 +5,6 @@ class Beer < ActiveRecord::Base
   has_many :users, through: :experiences
 
   validates_presence_of :brewery, :style, :name
+  validates_uniqueness_of :name
   validates :abv, presence: true, length: {in: 0..30}
 end
- 
