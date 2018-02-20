@@ -96,4 +96,16 @@
   <h3><a href="/beers/<%=@beer.id%>"> <%=@beer.name%></a></h3>
   <h4>By: <a href="/breweries/<%=@beer.brewery.slug%>"> <%=@beer.brewery.name%></a></h4>
   <h3>So, <%=current_user.name%>, how did you like that <%=@beer.name%>?</h3>
+  <form method="POST" action="/experiences">
+    <input type="hidden" name="experience[beer_id]" value="<%=@beer.id%>">
+    <label for="experience_rating">Your Rating:</label>
+    <input type="number" name="experience[rating]" min="0" max="5" step="0.25" value="3">
+    <br>
+    <label for="experience_comments">Your Comments:</label>
+    <br>
+    <textarea name="experience[comments]" id="experience_comments" placeholder="Share your thoughts!" style="width:400px; height:100px"></textarea>
+
+    <br>
+    <button type="submit">Submit</button>
+  </form>
 <% end %>
