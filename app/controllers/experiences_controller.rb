@@ -38,6 +38,8 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  post '/experiences/new/beer' do
+  end
 
 
 
