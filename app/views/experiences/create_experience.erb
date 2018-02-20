@@ -62,7 +62,18 @@
     <label for="beer_name">Beer Name:</label>
     <input type="text" name="beer[name]" id="beer_name"></input>
     <br>
-
+    <label for="beer_style">Beer Style:</label>
+    <select name="beer[style_id]">
+      <option value="">None</option>
+      <% Style.all.order(:name).each do |style|%>
+          <option value="<%=style.id%>"><%=style.name%></option>
+      <% end %>
+    </select>
+    <br>
+    <h4>If beer style is not on list please fill out beer style information:</h4>
+    <label for="style_name">Style Name:</label>
+    <input type="text" name="style_name" id="style_name"></input>
+    <br>
 
     <button type="submit">Continue</button>
   </form>
