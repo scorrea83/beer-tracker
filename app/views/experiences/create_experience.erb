@@ -91,3 +91,9 @@
   </form>
 
 <% end %>
+
+<% if locals[:message] == "beer located/created" %>
+  <h3><a href="/beers/<%=@beer.id%>"> <%=@beer.name%></a></h3>
+  <h4>By: <a href="/breweries/<%=@beer.brewery.slug%>"> <%=@beer.brewery.name%></a></h4>
+  <h3>So, <%=current_user.name%>, how did you like that <%=@beer.name%>?</h3>
+<% end %>
