@@ -45,6 +45,10 @@ class ExperiencesController < ApplicationController
     new_beer = Beer.new(params[:beer])
     new_beer.brewery = @brewery
 
+    if !params[:beer_id].empty? && params[:beer].any? {|key, value| value != ""}
+      flash[:message] = "Sorry, to continue you must either select a beer from the dropdown list OR add new beer information to create new beer."
+      erb :'experiences/create_experience', locals: {message: "brewery located/created"}
+    end
   end
 
 
