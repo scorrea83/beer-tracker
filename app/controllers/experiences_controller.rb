@@ -80,6 +80,9 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  post '/experiences' do
+
+  end
 
 
   get '/experiences/:id' do
