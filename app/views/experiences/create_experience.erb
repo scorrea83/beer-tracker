@@ -2,6 +2,11 @@
 <h2>Having a Drink? Keep track of it by creating a new experience.  </h2>
 <br>
 
+<% if flash.has?(:message) %>
+  <h3> <%= flash[:message] %> </h3>
+  <br>
+<% end %>
+
 
 
 <% if locals.empty? %>
