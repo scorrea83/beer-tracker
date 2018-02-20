@@ -3,6 +3,7 @@ class Brewery < ActiveRecord::Base
   has_many :styles, through: :beers
 
   validates_presence_of :name, :country
+  validates_uniqueness_of :name
 
   def slug
     self.name.downcase.split(" ").join("-")
