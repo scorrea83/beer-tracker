@@ -52,6 +52,18 @@
         <option value="<%=beer.id%>"><%=beer.name%></option>
       <% end %>
     </select>
+    <br></br>
+    <h4>If your beer doesn't appear on the list, please fill out the information below to add your beer to Beer Tracker and continue creating your experience:</h4>
+    <h4>Please note: <br> beer name, beer style, and beer ABV are all required fields</h4>
+    <br>
+    <h4> <strong>Brewery:</strong> <%=@brewery.name%> </h4>
+    <input type="hidden" name="brewery_id" id="brewery_name" value="<%=@brewery.id%>"</input>
+    <br>
+    <label for="beer_name">Beer Name:</label>
+    <input type="text" name="beer[name]" id="beer_name"></input>
+    <br>
+
+
     <button type="submit">Continue</button>
   </form>
 
