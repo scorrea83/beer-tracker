@@ -102,12 +102,18 @@ class ExperiencesController < ApplicationController
 
   get '/experiences/:id/edit' do
     @experience = Experience.find_by(id: params[:id])
+    binding.pry
     if @experience && experience_ownership?(@experience)
       erb :'experiences/edit_experience'
     else
       redirect '/experiences'
     end
   end
+
+  delete 'experiences/:id/delete' do
+
+  end
+
 
 
 
