@@ -110,7 +110,7 @@ class ExperiencesController < ApplicationController
     end
   end
 
-  delete 'experiences/:id/delete' do
+  delete '/experiences/:id/delete' do
 
   end
 
