@@ -100,6 +100,10 @@ class ExperiencesController < ApplicationController
     erb :'experiences/show_experience'
   end
 
+  get '/experiences/:id/edit' do
+    erb :'experiences/edit_experience'
+  end
+
 
 
 end
