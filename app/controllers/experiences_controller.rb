@@ -4,7 +4,11 @@ class ExperiencesController < ApplicationController
   use Rack::Flash
 
   get '/experiences' do
-    erb :'experiences/experiences'
+    if logged_in?
+      erb :'experiences/experiences'
+    else
+      redirect '/login'
+    end
   end
 
   get '/experiences/new' do
