@@ -82,7 +82,17 @@ class ExperiencesController < ApplicationController
 
   post '/experiences' do
     @user = current_user
+    if params[:experience][:rating] != ""
+      @user.experiences.build(params[:experience])
+      @user.save
+      redirect "/users/#{@user.slug}"
+    else
+      @beer = Beer.find_by(id: params[:experience][:beer_id])
+      @brewery = @beer.brewery
+      @errors = ["Rating cannot be left blank."]
 
+      erb :'experiences/create_experience', locals: {message: "beer located/created"}
+    end
   end
 
   get '/experiences/:id' do
