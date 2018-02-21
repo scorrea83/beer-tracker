@@ -111,10 +111,15 @@ class ExperiencesController < ApplicationController
   end
 
   delete '/experiences/:id/delete' do
-
+    @experience = Experience.find_by(id: params[:id])
+    if experience_ownership?(@experience)
+      current_user.experiences.destroy(@experience)
+      flash[:message] = "Experience has been deleted."
+      redirect "/users/#{current_user.slug}"
+    else
+      redirect "/experiences"
+    end
   end
-
-
 
 
 end
