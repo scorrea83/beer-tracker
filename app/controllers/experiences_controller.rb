@@ -106,11 +106,16 @@ class ExperiencesController < ApplicationController
   get '/experiences/:id' do
     if logged_in?
       @experience = Experience.find(params[:id])
-      erb :'experiences/show_experience'
+      if experience_ownership?(@experience)
+        erb :'experiences/show_experience', locals: {message: "current_user"}
+      else
+        erb :'experiences/show_experience'
+      end
     else
       redirect '/login'
     end
   end
+
 
   get '/experiences/:id/edit' do
     @experience = Experience.find_by(id: params[:id])
@@ -127,6 +132,7 @@ class ExperiencesController < ApplicationController
 
   delete '/experiences/:id/delete' do
     @experience = Experience.find_by(id: params[:id])
+
     if experience_ownership?(@experience)
       current_user.experiences.destroy(@experience)
       flash[:message] = "Experience has been deleted."
