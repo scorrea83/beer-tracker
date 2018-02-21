@@ -112,11 +112,14 @@ class ExperiencesController < ApplicationController
 
   get '/experiences/:id/edit' do
     @experience = Experience.find_by(id: params[:id])
-    binding.pry
-    if @experience && experience_ownership?(@experience)
-      erb :'experiences/edit_experience'
+    if logged_in?
+      if @experience && experience_ownership?(@experience)
+        erb :'experiences/edit_experience'
+      else
+        redirect '/experiences'
+      end
     else
-      redirect '/experiences'
+      redirect '/login'
     end
   end
 
