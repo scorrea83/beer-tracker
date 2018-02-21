@@ -136,6 +136,13 @@ class ExperiencesController < ApplicationController
 
   patch '/experiences/:id' do
     @experience = Experience.find_by(id: params[:id])
+    if params[:experience][:rating].empty?
+      redirect "/experiences/#{@experience.id}/edit"
+    else
+      @experience.update(rating: params[:experience][:rating], comments: params[:experience][:comments])
+      flash[:message] = "Experience Successfully Updated!"
+      redirect "/experiences/#{@experience.id}"
+    end
   end
 
   delete '/experiences/:id/delete' do
