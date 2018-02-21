@@ -81,9 +81,9 @@ class ExperiencesController < ApplicationController
   end
 
   post '/experiences' do
+    @user = current_user
 
   end
-
 
   get '/experiences/:id' do
     @experience = Experience.find(params[:id])
