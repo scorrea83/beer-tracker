@@ -2,7 +2,7 @@
 
 <h4>Here are all your beer experiences:</h4>
 <!-- Style.all.order(:name).each -->
-<% @user.experiences.each do |experience| %>
+<% @user.experiences.order(created_at: :desc).each do |experience| %>
   <div>
     <p><%=experience.beer.name%> <br>
     Rating: <%=experience.rating%>  <button><a href="/experiences/<%=experience.id%>">View details</a></button></p>
