@@ -16,6 +16,7 @@ class ExperiencesController < ApplicationController
       erb :'experiences/create_experience'
     else
       redirect '/login'
+    end
   end
 
   post '/experiences/new/brewery' do
@@ -108,6 +109,7 @@ class ExperiencesController < ApplicationController
       erb :'experiences/show_experience'
     else
       redirect '/login'
+    end
   end
 
   get '/experiences/:id/edit' do
