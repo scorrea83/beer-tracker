@@ -21,7 +21,12 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-      erb :'users/login'
+      if logged_in?
+        redirect "/users/#{current_user.slug}"
+      else
+        flash[:message] = "Please note, you must sign up first if you don't already have an account."
+        erb :'users/login'
+      end
     end
 
     post '/login' do
