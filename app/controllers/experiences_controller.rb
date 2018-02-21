@@ -116,6 +116,10 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  patch '/experiences/:id/edit' do
+    @experience  = Experience.find_by(id: params[:id])
+    redirect "/experiences/#{@experience.id}/edit"
+  end
 
   get '/experiences/:id/edit' do
     @experience = Experience.find_by(id: params[:id])
@@ -128,6 +132,10 @@ class ExperiencesController < ApplicationController
     else
       redirect '/login'
     end
+  end
+
+  patch '/experiences/:id' do
+    @experience = Experience.find_by(id: params[:id])
   end
 
   delete '/experiences/:id/delete' do
