@@ -11,3 +11,14 @@
   <h5>Rating: <%=@experience.rating%> of 5 on <%=@experience.created_at%></h5>
   <p>Comments: "<%=@experience.comments%>"</p>
 </div>
+
+<% if locals[:message] == "current_user" %>
+  <div>
+    <form method="POST" action="/experiences/<%= @experience.id %>/edit">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <input type="submit" value="Edit Experience">
+    </form>
+  </div>
+
+
+<% end %>
