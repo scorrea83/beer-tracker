@@ -15,6 +15,20 @@
  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+  <nav>
+   <% if logged_in? %>
+
+     <a href="/experiences/new"> Create Experience </a>
+     <a href="/logout"> Log Out </a>
+     <p>Welcome, <%=current_user.username %></p>
+
+   <% else %>
+     <a href="/signup">Sign Up</a>
+     <a href="/login"> Sign In </a>
+   <%end %>
+
+  </nav>
   <div class="container">
 
       <%= yield %>
