@@ -1,5 +1,10 @@
 <h1>Welcome <%=@user.username%></h1>
 
+<% if flash.has?(:message) %>
+  <h3> <%= flash[:message] %> </h3>
+  <br>
+<% end %>
+
 <h4>Here are all your beer experiences:</h4>
 <!-- Style.all.order(:name).each -->
 <% @user.experiences.order(created_at: :desc).each do |experience| %>
