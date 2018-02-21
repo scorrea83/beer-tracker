@@ -1,11 +1,18 @@
-<h1>Welcome <%=@user.username%></h1>
+
+<% if locals[:message] == "current_user page" %>
+  <h1>Welcome to your Beer Tracker User Page <%=@user.username%></h1>
+  <h4>Here are all your beer experiences:</h4>
+<% else %>
+  <h1>Welcome to <%=@user.username%>'s Beer Tracker User Profile</h1>
+  <h4>Here are all their beer experiences:</h4>
+<% end %>
+
 
 <% if flash.has?(:message) %>
   <h3> <%= flash[:message] %> </h3>
   <br>
 <% end %>
 
-<h4>Here are all your beer experiences:</h4>
 <!-- Style.all.order(:name).each -->
 <% @user.experiences.order(created_at: :desc).each do |experience| %>
   <div>
