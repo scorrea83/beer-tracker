@@ -46,7 +46,14 @@ class UsersController < ApplicationController
 
     get '/users/:slug' do
       @user = User.find_by_slug(params[:slug])
-      erb :"users/show_user"
+      binding.pry
+      if logged_in? && current_user == @user
+        erb :"users/show_user", locals: {message: "current_user page"}
+      elsif logged_in?
+        erb :"users/show_user"
+      else
+        redirect '/login'
+      end
     end
 
 
