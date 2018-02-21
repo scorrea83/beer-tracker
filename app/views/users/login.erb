@@ -1,5 +1,10 @@
 <h1>Welcome to Beer Tracker </h1>
 
+<% if flash.has?(:message) %>
+  <h3> <%= flash[:message] %> </h3>
+  <br>
+<% end %>
+
 <h2>Please Log In Below:</h2>
 
 <form method="POST" action="/login">
