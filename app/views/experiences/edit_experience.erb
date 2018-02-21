@@ -1,3 +1,16 @@
 <h1>Edit Your Experience <%=@experience.user.name%></h1>
 <h3><a href="/beers/<%=@experience.beer.id%>"> <%=@experience.beer.name%></a></h3>
 <h4>By: <a href="/breweries/<%=@experience.beer.brewery.slug%>"> <%=@experience.beer.brewery.name%></a></h4>
+
+<form method="POST" action="/experiences/<%=@experience.id%>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="experience_rating">Your Rating:</label>
+  <input type="number" name="experience[rating]" min="0" max="5" step="0.25" value="<%=@experience.rating%>">
+  <br>
+  <label for="experience_comments">Your Comments:</label>
+  <br>
+  <textarea name="experience[comments]" id="experience_comments" placeholder="<%=@experience.comments%>" style="width:400px; height:100px"></textarea>
+
+  <br>
+  <button type="submit">Submit Changes</button>
+</form>
