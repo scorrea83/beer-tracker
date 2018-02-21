@@ -103,8 +103,11 @@ class ExperiencesController < ApplicationController
   end
 
   get '/experiences/:id' do
-    @experience = Experience.find(params[:id])
-    erb :'experiences/show_experience'
+    if logged_in?
+      @experience = Experience.find(params[:id])
+      erb :'experiences/show_experience'
+    else
+      redirect '/login'
   end
 
   get '/experiences/:id/edit' do
