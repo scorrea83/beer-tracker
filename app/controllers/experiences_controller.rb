@@ -12,7 +12,10 @@ class ExperiencesController < ApplicationController
   end
 
   get '/experiences/new' do
-    erb :'experiences/create_experience'
+    if logged_in?
+      erb :'experiences/create_experience'
+    else
+      redirect '/login'
   end
 
   post '/experiences/new/brewery' do
