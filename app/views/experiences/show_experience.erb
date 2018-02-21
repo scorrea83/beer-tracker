@@ -5,6 +5,11 @@
   <h3>Beer Tracker User <%=@experience.user.name%> tasted a: </h3>
 <% end %>
 
+<% if flash.has?(:message) %>
+  <h3> <%= flash[:message] %> </h3>
+  <br>
+<% end %>
+
 <div >
   <h3><a href="/beers/<%=@experience.beer.id%>"> <%=@experience.beer.name%></a></h3>
   <h4>By: <a href="/breweries/<%=@experience.beer.brewery.slug%>"> <%=@experience.beer.brewery.name%></a></h4>
